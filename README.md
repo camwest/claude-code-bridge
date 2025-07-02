@@ -1,135 +1,93 @@
-# Turborepo starter
+# Claude Code Bridge
 
-This Turborepo starter is maintained by the Turborepo core team.
+🔗 A CLI bridge that enables remote browser control of local Claude Code execution, keeping your code secure on your machine.
 
-## Using this example
+## Quick Start
 
-Run the following command:
-
-```sh
-npx create-turbo@latest
+```bash
+npm i -g @claude/bridge          # Install once (Node ≥ 18)
+cd ~/projects/my-repo            # Navigate to your repo
+claude-bridge                    # Start bridge
+# CLI prints:
+# 🔗 https://bridge.app/pair#7F32A9C4   PIN: 7F32A9C4 (10-min expiry)
 ```
 
-## What's inside?
+1. Open the link → Sign in with Google → Enter PIN
+2. Browser shows conversations list
+3. Type prompts; replies stream live
+4. Stop bridge (Ctrl-C), restart later without new PIN
 
-This Turborepo includes the following packages/apps:
+## Architecture
 
-### Apps and Packages
+This monorepo contains:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Applications
+- `cli-bridge`: Node.js CLI binary for local Claude Code execution
+- `web`: Next.js web interface for browser control  
+- `docs`: Project documentation
+
+### Packages
+- `bridge-protocol`: Shared types for CLI-browser communication
+- `claude-sdk`: TypeScript wrapper around Claude Code SDK
+- `supabase`: Authentication and real-time communication
+- `eslint-config`: Shared ESLint configurations
+- `typescript-config`: Shared TypeScript configurations
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+## How It Works
 
-This Turborepo has some additional tools already setup for you:
+1. **Local Execution**: Claude Code runs entirely on your machine
+2. **Secure Bridge**: CLI creates encrypted Supabase Realtime channels  
+3. **Browser Control**: Web UI sends prompts and receives responses
+4. **Multi-Device**: Same session works across all your devices/tabs
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Development
 
-### Build
+### Prerequisites
+- Node.js ≥ 18
+- Claude Code CLI installed and configured
+- ANTHROPIC_API_KEY environment variable
 
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+### Setup
+```bash
+git clone https://github.com/camwest/claude-code-mobile
+cd claude-code-mobile
+bun install
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Build & Test
+```bash
+# Build all packages
+bun run build
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+# Run CLI in development
+cd apps/cli-bridge
+bun run dev
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+# Run web UI
+cd apps/web  
+bun run dev
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## Project Status
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+🚧 **In Development** - See [GitHub Issues](https://github.com/camwest/claude-code-mobile/issues) for current progress:
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+- [📦 Bridge Protocol Package](https://github.com/camwest/claude-code-mobile/issues/2)
+- [🔧 Claude SDK Package](https://github.com/camwest/claude-code-mobile/issues/3)  
+- [💻 CLI Bridge Application](https://github.com/camwest/claude-code-mobile/issues/4)
+- [🌐 Web UI Application](https://github.com/camwest/claude-code-mobile/issues/5)
+- [📡 Supabase Integration](https://github.com/camwest/claude-code-mobile/issues/6)
+- [📚 Documentation & Distribution](https://github.com/camwest/claude-code-mobile/issues/7)
 
-### Remote Caching
+## Security
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- Code never leaves your machine
+- Supabase channels use random UUIDs
+- Google authentication via Supabase Auth
+- TLS encryption for all communications
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## Contributing
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+See individual GitHub issues for specific tasks. Each issue contains detailed acceptance criteria and implementation guidance.

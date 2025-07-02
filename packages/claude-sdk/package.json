@@ -1,0 +1,17 @@
+{
+  "name": "@claude-code-mobile/claude-sdk",
+  "version": "0.0.0", 
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": "./src/client.ts",
+    "./types": "./src/types.ts"
+  },
+  "dependencies": {
+    "@anthropic/claude-code": "^0.1.0"
+  },
+  "devDependencies": {
+    "@claude-code-mobile/typescript-config": "workspace:*",
+    "typescript": "5.8.2"
+  }
+}

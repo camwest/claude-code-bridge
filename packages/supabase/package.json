@@ -1,0 +1,19 @@
+{
+  "name": "@claude-code-mobile/supabase",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": "./src/client.ts",
+    "./types": "./src/types.ts",
+    "./auth": "./src/auth.ts",
+    "./queue": "./src/queue.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0"
+  },
+  "devDependencies": {
+    "@claude-code-mobile/typescript-config": "workspace:*",
+    "typescript": "5.8.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@claude-code-mobile/bridge-protocol",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./types": "./src/types.ts",
+    "./messages": "./src/messages.ts",
+    "./channels": "./src/channels.ts"
+  },
+  "devDependencies": {
+    "@claude-code-mobile/typescript-config": "workspace:*",
+    "typescript": "5.8.2"
+  }
+}
