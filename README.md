@@ -5,9 +5,9 @@
 ## Quick Start
 
 ```bash
-npm i -g @claude/bridge          # Install once (Node ≥ 18)
+npm i -g claude-code-bridge      # Install once (Node ≥ 18)
 cd ~/projects/my-repo            # Navigate to your repo
-claude-bridge                    # Start bridge
+claude-code-bridge               # Start bridge
 # CLI prints:
 # 🔗 https://bridge.app/pair#7F32A9C4   PIN: 7F32A9C4 (10-min expiry)
 ```
@@ -46,13 +46,12 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Prerequisites
 - Node.js ≥ 18
-- Claude Code CLI installed and configured
-- ANTHROPIC_API_KEY environment variable
+- ANTHROPIC_API_KEY environment variable (for testing)
 
 ### Setup
 ```bash
-git clone https://github.com/camwest/claude-code-mobile
-cd claude-code-mobile
+git clone https://github.com/camwest/claude-code-bridge
+cd claude-code-bridge
 bun install
 ```
 
@@ -72,14 +71,14 @@ bun run dev
 
 ## Project Status
 
-🚧 **In Development** - See [GitHub Issues](https://github.com/camwest/claude-code-mobile/issues) for current progress:
+🚧 **In Development** - See [GitHub Issues](https://github.com/camwest/claude-code-bridge/issues) for current progress:
 
-- [📦 Bridge Protocol Package](https://github.com/camwest/claude-code-mobile/issues/2)
-- [🔧 Claude SDK Package](https://github.com/camwest/claude-code-mobile/issues/3)  
-- [💻 CLI Bridge Application](https://github.com/camwest/claude-code-mobile/issues/4)
-- [🌐 Web UI Application](https://github.com/camwest/claude-code-mobile/issues/5)
-- [📡 Supabase Integration](https://github.com/camwest/claude-code-mobile/issues/6)
-- [📚 Documentation & Distribution](https://github.com/camwest/claude-code-mobile/issues/7)
+- [📦 Bridge Protocol Package](https://github.com/camwest/claude-code-bridge/issues/2)
+- [🔧 Claude SDK Package](https://github.com/camwest/claude-code-bridge/issues/3)  
+- [💻 CLI Bridge Application](https://github.com/camwest/claude-code-bridge/issues/4)
+- [🌐 Web UI Application](https://github.com/camwest/claude-code-bridge/issues/5)
+- [📡 Supabase Integration](https://github.com/camwest/claude-code-bridge/issues/6)
+- [📚 Documentation & Distribution](https://github.com/camwest/claude-code-bridge/issues/7)
 
 ## Security
 

@@ -1,4 +1,4 @@
-# @claude-code-mobile/supabase
+# @claude-code-bridge/supabase
 
 Shared Supabase client configuration and utilities for the Claude Code Mobile project.
 
@@ -14,7 +14,7 @@ Shared Supabase client configuration and utilities for the Claude Code Mobile pr
 ### Client Setup
 
 ```typescript
-import { supabase, supabaseAdmin } from '@claude-code-mobile/supabase/client'
+import { supabase, supabaseAdmin } from '@claude-code-bridge/supabase/client'
 
 // Browser/client-side operations
 const { data, error } = await supabase.from('jobs').select('*')
@@ -26,7 +26,7 @@ const { data, error } = await supabaseAdmin.from('jobs').insert(...)
 ### Authentication
 
 ```typescript
-import { AuthService } from '@claude-code-mobile/supabase/auth'
+import { AuthService } from '@claude-code-bridge/supabase/auth'
 
 // Sign in
 const user = await AuthService.signInWithPassword(email, password)
@@ -43,7 +43,7 @@ AuthService.onAuthStateChange((user) => {
 ### Job Queue
 
 ```typescript
-import { JobQueue } from '@claude-code-mobile/supabase/queue'
+import { JobQueue } from '@claude-code-bridge/supabase/queue'
 
 // Create a new job
 const job = await JobQueue.createJob({

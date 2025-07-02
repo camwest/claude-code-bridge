@@ -12,7 +12,7 @@ import chalk from 'chalk';
 const program = new Command();
 
 program
-  .name('claude-bridge')
+  .name('claude-code-bridge')
   .description('CLI bridge for remote Claude Code execution')
   .version('0.1.0');
 
@@ -26,7 +26,7 @@ program
     
     // TODO: Implement bridge logic
     console.log(chalk.yellow('⚠️  Implementation in progress - see GitHub issues'));
-    console.log(chalk.gray('Repository: https://github.com/camwest/claude-code-mobile'));
+    console.log(chalk.gray('Repository: https://github.com/camwest/claude-code-bridge'));
   });
 
 program.parse(process.argv);

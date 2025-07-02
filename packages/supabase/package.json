@@ -1,5 +1,5 @@
 {
-  "name": "@claude-code-mobile/supabase",
+  "name": "@claude-code-bridge/supabase",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
     "@supabase/supabase-js": "^2.50.0"
   },
   "devDependencies": {
-    "@claude-code-mobile/typescript-config": "workspace:*",
+    "@claude-code-bridge/typescript-config": "workspace:*",
     "typescript": "5.8.2"
   }
 }

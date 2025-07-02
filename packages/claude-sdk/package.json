@@ -1,5 +1,5 @@
 {
-  "name": "@claude-code-mobile/claude-sdk",
+  "name": "@claude-code-bridge/claude-sdk",
   "version": "0.0.0", 
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
     "@anthropic/claude-code": "^0.1.0"
   },
   "devDependencies": {
-    "@claude-code-mobile/typescript-config": "workspace:*",
+    "@claude-code-bridge/typescript-config": "workspace:*",
     "typescript": "5.8.2"
   }
 }
